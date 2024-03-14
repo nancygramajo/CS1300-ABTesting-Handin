@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A/B Testing Handin Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div>
+    <p>Nancy Gramajo Reyes</p>
+    <p>CS1300</p>
+    <h1>A/B Testing Assignment</h1>
+    <p>The goal of this assignment was to run a simple A/B test on two different UI designs
+      and analyze the results. From these results, we drew conclusions on whether a design
+      choice could have reasonably impacted user interaction.
+    </p>
+  </div>
+  <div>
+    <h2>Part 1: Data Collection</h2>
+    <p>The first part of this assignment occurred during studio (lab) where we were told to
+      perform a certain task on our TA's version A of the webpage. The task was to make an appointment
+      with a doctor. We were then given the code for the webpage and were tasked with many small
+      UI changes to it. Finally, everyone in the studio had the opportunity of trying to make
+      the same appointment on each other's version B of the webpage. The data that I use in this
+      assignment are from 20 students who interacted with my version B of the webpage during studio.
+    </p>
+    <h3>UI Changes Made to Version A</h2>
+    <img src="./assets/A:B Testing Version B.png">
+  </div>
+
+  <div>
+    <h2>Part 2: Analysis</h2>
+    <p>For the second part of this assignment, I created hypotheses for each metric
+      of data that I would be performing tests on. We were given two of the three metrics
+      to measure. The third metric I chose is number of clicks. The three metrics of data I analyzed
+      are misclick rate, time on page, and number of clicks.
+    </p>
+    <h4>Hypotheses</h4>
+    <h5>Misclick Rate</h5>
+    <div class="metrics">
+      <p>
+        Misclick rate refers to the frequency with which users click something else
+        on the page before finding the correct button for the task.
+      </p>  
+      <ul class="bullet-points">
+        <li>Null Hypothesis: The misclick rate on version A will be the same as the misclick rate
+          on version B.
+        </li>
+        <li>Alternative Hypothesis: The misclick rate on version A will be higher than the
+          misclick rate on version B.
+        </li>
+      </ul>
+      <p>
+        I predict I will reject the null hypothesis. My alternative hypothesis stems from my choice to
+        remove the button to view appointments on version A, thus compelling users to click only on
+        the appointment-making button.
+      </p>  
+    </div>
+    
+    <h5>Time on Page</h5>
+    <div class="metrics">
+      <p>
+      Time on page refers to the time spent on the webpage for each user group.
+      </p>  
+      <ul class="bullet-points">
+        <li>Null Hypothesis: The average time spent on version A will be the same as
+          the average time spent on version B.
+        </li>
+        <li>Alternative Hypothesis: The average time spent on version A will be more than
+          the average time spent on version B.
+        </li>
+      </ul>
+      <p>
+        I predict I will reject the null hypothesis. This decision is based on the changes I made to version A,
+        including the removal of the view appointments button, the addition of dividers between available
+        appointments, and the display of appointments in chronological order. These changes are aimed at
+        enhancing user navigation and efficiency.
+      </p>
+    </div>
+
+    <h5>Number of Clicks</h5>
+    <div class="metrics">
+      <p>
+        Number of clicks refers to the number of clicks it takes each user to complete the
+        task successfully.
+      </p>
+      <ul class="bullet-points">
+        <li>Null Hypothesis: The average number of clicks on version A will be the same
+          as the average number of clicks on version B.
+        </li>
+        <li>Alternative Hypothesis: The average number of clicks on version A will be
+          greater than the average number of clicks on version B.
+        </li>
+      </ul>
+      <p>
+        I predict I will fail to reject the null hypothesis. While the changes I made to the webpage's
+        design in version A may improve navigation and user understanding, the difference in the average
+        number of clicks between the two versions may not be statistically significant.
+        The number of clicks can vary based on user's behaviors, including their level of
+        attentiveness and approach to the task.
+      </p>
+    </div> 
+  </div>
+
+  <div>
+    <h4>Statistical Tests on Data</h4>
+    <h5>Test 1 - Misclick rate</h5>
+    <div class="metrics">
+      <p>
+        I conducted a chi-squared test because the variable "did_misclick" is categorical, measured as either true or false.
+      </p>
+      <p>
+        The degrees of freedom for this test are calculated using the formula df = (r-1)(c-1), where r is the number of rows 
+        and c is the number of columns. With 2 rows and 2 columns in the table, the degrees of freedom are (2-1)(2-1) = 1.
+      </p>  
+      <p>
+        The chi-squared statistic obtained is 4.55. This statistic compares observed values to expected values and helps 
+        determine whether the difference between them is statistically significant. With 1 degree of freedom and a p-value 
+        of 0.033, the chi-squared statistic of 4.55 indicates a statistically significant difference between observed and 
+        expected values. 
+      </p>
+      <p>    
+        The p-value of 0.033 represents the probability, under the assumption of no effect or difference, 
+        of obtaining a result equal to or more extreme than what was observed. Considering a significance level of 0.05, 
+        as the p-value is less than 0.05, I reject the null hypothesis. Thus, I conclude that there is a statistically 
+        significant difference in misclick rates between version A and version B.
+      </p>
+    </div>
+
+    <h5>Test 2 - Time on Page</h5>
+    <div class="metrics">
+      <p>
+        I conducted a one-tailed t-test because "time_on_page" is a continuous variable, and I'm specifically interested in 
+        whether the average time spent on version A is greater than that of version B. 
+      </p>
+      <p>
+        The degrees of freedom for this test are 
+        calculated based on the sample sizes and variances of the two groups, resulting in a value of 22.6.
+      </p> 
+      <p>
+        The t-score obtained 
+        is 4.93. This score indicates the difference between the averages of the two groups relative to the variability within 
+        the groups. 
+      </p>
+      <p>
+        The p-value for the one-tailed test (A < B) is reported as 0.99. However, since I'm interested in whether 
+        the average time spent on version A is greater than version B, the appropriate p-value is 0.01, which is the complement. 
+        With a significance level of 0.05, my p-value of 0.01 is less than 0.05. Therefore, I reject the null hypothesis and 
+        conclude that there is a statistically significant difference between the average time spent on version A and version B.
+      </p>
+    </div>
+    
+    <h5>Test 3 - Number of Clicks</h5>
+    <div class="metrics">
+      <p>
+        I conducted a one-tailed t-test because "num_clicks" is a continuous variable, and I specifically want to determine 
+        whether the average number of clicks on version A is greater than that of version B. 
+      </p>  
+      <p>
+        The degrees of freedom for this test 
+        are calculated based on the sample sizes and variances of the two groups, resulting in a value of 22. 
+
+      </p>
+      <p>
+        The t-score obtained 
+        is 2.27. This score indicates the difference between the averages of the two groups relative to the variability within the 
+        groups.
+      </p>
+      <p>
+        The p-value for the one-tailed test (A < B) is reported as 0.98. However, since I'm interested in whether the average 
+        number of clicks on version A is greater than version B, the appropriate p-value is 0.02, which is the complement. 
+        With a significance level of 0.05, my p-value of 0.02 is less than 0.05. Therefore, I reject the null hypothesis and 
+        conclude that there is a statistically significant difference between the average number of clicks required to complete 
+        the task on version A and version B.
+      </p>
+    </div>
+    
+    <h4>Summary Statistics</h4>
+    <p>
+      I collected 20 data points, measuring three metrics: time_on_page, num_clicks, and did_misclick. 
+    </p>
+    <p>
+      For time_on_page, 
+      the mean value is 6444.15, with a median value of 6198.5. While there's no mode value, this indicates that, on average, 
+      each user spent approximately six seconds on the webpage. 
+    </p>  
+    <p>
+      Regarding num_clicks, the mean, median, and mode values are all 2. 
+      This suggests that, on average, it took each user two clicks to successfully complete the task, which is positive feedback. 
+      Since the minimum required clicks for the task is two, this indicates that the webpage design facilitated ease of use for users.
+    </p>
+    <p>
+      For did_misclick, a categorical variable, I cannot provide mean, median, or mode values. However, all users have a value of 
+      FALSE, indicating that no one in the user group mistakenly clicked another button when trying to make an appointment. This 
+      prevalence of FALSE values may be attributed to the removal of the "see appointments" button, as clicking it would result in 
+      a TRUE value for did_misclick. 
+    </p>
+    <p>  
+      Overall, these statistics suggest that my webpage design, with its reduced clicks and 
+      absence of misclicks, effectively improved the appointment-making process for users.
+    </p>
+  </div>
+</body>
